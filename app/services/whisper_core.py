@@ -46,6 +46,7 @@ def get_text(audio_filename: str, model_size: str = "large-v3", device: str = "c
         segments, info = model.transcribe(clip, beam_size=beam_size, condition_on_previous_text=False,
                                                   language=language)  # 取消窗口之间的上下文关系
         for seg in segments:
+            # 将繁体字转化为简体字
             seg.text = cc.convert(seg.text)
             subtitles.append({'start': round(ts['start'] + seg.start, 3), 'end': round(ts['start'] + seg.end, 3), 'text': seg.text})
 
