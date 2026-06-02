@@ -1,9 +1,9 @@
 import json
+from json import JSONDecodeError
 
 
 # 比较相邻两个summary的边界是否高度相似
 def review_boundaries(prev_summaries, curr_summaries, client, model):
-    is_similar = True
     SYSTEM_PROMPT = """你是一个视频内容边界审查专家。你的任务是检查两个相邻视频片段的摘要，判断它们是否在话题边界上发生了截断。                                                        
               ## 背景
               这两段摘要是从同一段视频的两个相邻时间块各自独立总结出来的。第一个块结束时可能正好在一个话题中间，
@@ -26,8 +26,8 @@ def review_boundaries(prev_summaries, curr_summaries, client, model):
               """
 
     # 获取 Json
-    prev_tail = prev_summaries[-2:]  # 前块最后 2 条
-    curr_head = curr_summaries[:2]  # 后块前 2 条
+    prev_tail = prev_summaries[-1:]  # 前块最后 1 条
+    curr_head = curr_summaries[:1]  # 后块前 1 条
     user_content = f"""【前块尾部摘要】
                     {json.dumps(prev_tail, ensure_ascii=False, indent=2)}
 
@@ -36,11 +36,15 @@ def review_boundaries(prev_summaries, curr_summaries, client, model):
 
     response = client.chat.completions.create(
         model=model,
-        message=[
+        messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_content}
         ],
         stream=False
     )
 
-    return json.loads(response.choice[0].message.content)
+    try:
+        return json.loads(response.choices[0].message.content)
+    except JSONDecodeError:
+        print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
+        return []

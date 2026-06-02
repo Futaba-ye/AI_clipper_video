@@ -1,0 +1,24 @@
+# 忽略 PyCharm/IntelliJ 的项目配置文件（必须加斜杠，表示忽略整个文件夹）
+.idea/
+*.iml
+
+# 忽略 Python 虚拟环境
+.venv/
+venv/
+ENV/
+
+# 忽略 Python 运行缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 忽略本地环境变量配置文件（未来如果有的话）
+.env
+
+# 测试文件
+tests/
+
+# AI参考文件
+document/
+

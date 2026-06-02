@@ -4,16 +4,15 @@ def split_chunks(subtitles, chunk_seconds=900):
         return []
 
     chunks, chunk = [], []
-    window_start_time, window_end_time = subtitles[0]['start'], 0
+    window_start_time, window_end_time = subtitles[0]['start_time'], 0
 
     for subtitle in subtitles:
         if window_end_time - window_start_time > chunk_seconds:
             chunks.append(chunk)
             chunk = []
-            window_start_time = subtitle['start']
-            window_end_time = subtitle['end']
+            window_start_time = subtitle['start_time']
 
-        window_end_time = subtitle['end']
+        window_end_time = subtitle['end_time']
         chunk.append(subtitle)
 
     if chunk:

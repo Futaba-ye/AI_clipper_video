@@ -48,6 +48,6 @@ def get_text(audio_filename: str, model_size: str = "large-v3", device: str = "c
         for seg in segments:
             # 将繁体字转化为简体字
             seg.text = cc.convert(seg.text)
-            subtitles.append({'start': round(ts['start'] + seg.start, 3), 'end': round(ts['start'] + seg.end, 3), 'text': seg.text})
+            subtitles.append({'start_time': round(ts['start'] + seg.start, 3), 'end_time': round(ts['start'] + seg.end, 3), 'text': seg.text})
 
     return subtitles

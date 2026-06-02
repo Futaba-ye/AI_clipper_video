@@ -1,5 +1,8 @@
 # 转换时间
 import json
+from json import JSONDecodeError
+
+from app.utils.VTT_transform import make_chunk_vtt
 
 
 def parse_time(ts: str) -> float:
@@ -35,25 +38,31 @@ def re_summarize_boundary(prev_summary, next_summary, prev_chunk, curr_chunk, cl
     parse_start = parse_time(boundary_start)
     parse_end = parse_time(boundary_end)
 
-    # 在原始字幕中提取
-    merged_subtitle = ["边界区域的总结: "]
-    merged_subtitle.append(prev_summary[-1])
-    merged_subtitle.append(next_summary[0])
-    merged_subtitle.append("被截断的话题的完整上下文:")
-
+    boundary_subs = []
     for sub in prev_chunk:
-        if sub["start"] >= parse_start:
-            merged_subtitle.append(sub)
+        if sub["start_time"] >= parse_start:
+            boundary_subs.append(sub)
     for sub in curr_chunk:
-        if sub["end"] <= parse_end:
-            merged_subtitle.append(sub)
+        if sub["end_time"] <= parse_end:
+            boundary_subs.append(sub)
+
+    user_content = f"""【旧总结（被截断的边界）】
+      {json.dumps([prev_summary[-1], next_summary[0]], ensure_ascii=False, indent=2)}
+
+      【边界区域的完整原始字幕】
+      {make_chunk_vtt(boundary_subs)}"""
 
     response = client.chat.completions.create(
         model=model,
-        message=[
+        messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": merged_subtitle}
+            {"role": "user", "content": user_content}
         ],
         stream=False
     )
-    return json.loads(response.choice[0].message.content)
+
+    try:
+        return json.loads(response.choices[0].message.content)
+    except JSONDecodeError:
+        print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
+        return []
