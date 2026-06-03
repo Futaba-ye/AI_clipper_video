@@ -37,6 +37,7 @@ def detect_scene(video_path: str, threshold: float = 30.0, min_scene_seconds: fl
 
     scenes.append({"start_time": scene_start, "end_time": frame_idx / fps})
     cap.release()
+    print("场景切换点已检测完毕")
 
     return scenes
 

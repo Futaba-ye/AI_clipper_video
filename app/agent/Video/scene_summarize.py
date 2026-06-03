@@ -1,9 +1,7 @@
 import base64
 import json
 from json import JSONDecodeError
-
 import cv2
-from openai import OpenAI
 from app.utils.VTT_transform import transform_vtt_time
 
 
@@ -12,15 +10,19 @@ def extract_frame(video_path: str, timestamp_sec):
     cap = cv2.VideoCapture(video_path)
     cap.set(cv2.CAP_PROP_POS_MSEC, timestamp_sec * 1000)
     ret, frame = cap.read()
+    if frame is None:
+        return None
     _, buf = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 85])
     cap.release()
     return "data:image/jpeg;base64," + base64.b64encode(buf).decode()
 
 
 # 总结画面场景
-def summarize_scene(scene, video_path, api_key, base_url, model) -> list[dict]:
+def summarize_scene(scene, video_path, client, model):
     mid = (scene['start_time'] + scene['end_time']) / 2
     base64_frame = extract_frame(video_path, mid)
+    if base64_frame is None:
+        return []
     SYSTEM_PROMPT = '''你是一个专业的直播画面内容分析系统。我会为你提供一张从直播回放视频中截取的画面，以及该画面对应的时间范围。     
                     【你的任务】
                     1. 仔细观察画面中的人物、动作、场景、界面元素（如游戏画面、弹幕、直播互动组件等）。
@@ -47,11 +49,6 @@ def summarize_scene(scene, video_path, api_key, base_url, model) -> list[dict]:
 
     start_str = transform_vtt_time(scene["start_time"])  # "00:15:30.000"
     end_str = transform_vtt_time(scene["end_time"])
-
-    client = OpenAI(
-        api_key=api_key,
-        base_url=base_url
-    )
 
     response = client.chat.completions.create(
         model=model,
