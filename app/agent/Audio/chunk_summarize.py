@@ -1,6 +1,6 @@
 import json
 from json import JSONDecodeError
-from app.utils.VTT_transform import make_chunk_vtt
+from app.utils.VTT_parser import make_chunk_vtt
 
 
 # 将一个vvt字幕chunk总结为summary

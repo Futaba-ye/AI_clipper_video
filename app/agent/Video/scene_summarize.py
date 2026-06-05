@@ -2,7 +2,7 @@ import base64
 import json
 from json import JSONDecodeError
 import cv2
-from app.utils.VTT_transform import transform_vtt_time
+from app.utils.VTT_time import transform_vtt_time
 
 
 # 提取帧画面
