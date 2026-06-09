@@ -4,7 +4,7 @@ from openai import OpenAI
 
 
 # 输入视频路径，返回视频总结Json列表
-def get_scene_summaries(scenes, video_path, api_key, base_url, model, max_workers=3):
+def generate_scene_summaries(scenes, video_path, api_key, base_url, model, max_workers=3):
     client = OpenAI(
         api_key=api_key,
         base_url=base_url

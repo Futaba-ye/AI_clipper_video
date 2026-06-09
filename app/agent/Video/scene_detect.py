@@ -2,7 +2,7 @@ import cv2
 
 
 # 检测场景切换点（返回时间戳列表）
-def detect_scene(video_path: str, threshold: float = 30.0, min_scene_seconds: float = 2.0, frame_skip=10):
+def detect_scenes(video_path: str, threshold: float = 30.0, min_scene_seconds: float = 2.0, frame_skip=10):
     cap = cv2.VideoCapture(video_path)  # 实例化一个视频捕获对象
     fps = cap.get(cv2.CAP_PROP_FPS)
     scenes = []

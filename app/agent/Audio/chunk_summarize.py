@@ -1,6 +1,7 @@
 import json
 from json import JSONDecodeError
 from app.utils.VTT_parser import make_chunk_vtt
+from app.utils.llm_json import parse_llm_json
 
 
 # 将一个vvt字幕chunk总结为summary
@@ -53,7 +54,7 @@ def summarize_chunk(chunk, client, model):
 
     # 从返回的字符串解析出Json
     try:
-        return json.loads(raw)
+        return parse_llm_json(raw)
     except JSONDecodeError:
         print(f"[ERROR] JSON 解析失败，原始返回: {raw}")
         return []

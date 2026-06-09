@@ -47,25 +47,31 @@ def write_vtt(subtitles, output_path):
 
 
 # 接收 [{start_time, end_time, text}, ...]（已格式化的时间戳）生成 VTT 字幕文件
-def output_vtt(subtitles, output_path):
+def write_formatted_vtt(subtitles, output_path):
     print("开始生成VTT字幕")
 
     safe_path = safe_open(output_path)
 
+    skipped = 0
     with open(safe_path, 'w', encoding='utf-8') as f:
         f.write("WEBVTT\n\n")
         for subtitle in subtitles:
+            if not isinstance(subtitle, dict):
+                skipped += 1
+                continue
             start_str = subtitle['start_time']
             end_str = subtitle['end_time']
             text = subtitle['text']
 
             f.write(f"{start_str} --> {end_str}\n{text}\n\n")
 
+    if skipped:
+        print(f"[WARN] 跳过了 {skipped} 个无效条目（非 dict），原因可能是上游 LLM 返回了空 JSON")
     print(f"[导出] 字幕已保存至 {safe_path}")
 
 
 # 接收 [{start_time, end_time, title, summary}, ...]（已格式化的时间戳）生成 VTT 字幕文件
-def output_clipper_vtt(subtitles, output_path):
+def write_clipper_vtt(subtitles, output_path):
     print("开始生成VTT字幕")
 
     safe_path = safe_open(output_path)

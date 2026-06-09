@@ -3,9 +3,10 @@ import json
 from json import JSONDecodeError
 
 from app.utils.VTT_parser import make_chunk_vtt
+from app.utils.llm_json import parse_llm_json
 
 
-def parse_time(ts: str) -> float:
+def parse_vtt_timestamp(ts: str) -> float:
     """把 "00:28:15.500" 转成 1695.5 秒"""
     h, m, s = ts.split(":")
     sec, ms = s.split(".")
@@ -35,8 +36,8 @@ def re_summarize_boundary(prev_summary, next_summary, prev_chunk, curr_chunk, cl
     # 时间范围
     boundary_start = prev_summary[-1]["start_time"]
     boundary_end = next_summary[0]["end_time"]
-    parse_start = parse_time(boundary_start)
-    parse_end = parse_time(boundary_end)
+    parse_start = parse_vtt_timestamp(boundary_start)
+    parse_end = parse_vtt_timestamp(boundary_end)
 
     boundary_subs = []
     for sub in prev_chunk:
@@ -62,7 +63,7 @@ def re_summarize_boundary(prev_summary, next_summary, prev_chunk, curr_chunk, cl
     )
 
     try:
-        return json.loads(response.choices[0].message.content)
+        return parse_llm_json(response.choices[0].message.content)
     except JSONDecodeError:
         print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
         return []

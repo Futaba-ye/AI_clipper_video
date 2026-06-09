@@ -1,8 +1,8 @@
 import base64
-import json
 from json import JSONDecodeError
 import cv2
 from app.utils.VTT_time import transform_vtt_time
+from app.utils.llm_json import parse_llm_json
 
 
 # 提取帧画面
@@ -64,7 +64,7 @@ def summarize_scene(scene, video_path, client, model):
 
     # 返回python对象
     try:
-        return json.loads(response.choices[0].message.content)
-    except JSONDecodeError:
-        print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
+        return parse_llm_json(response.choices[0].message.content)
+    except (JSONDecodeError, Exception) as e:
+        print(f"[ERROR] JSON 解析失败: {e}\n原始返回: {response.choices[0].message.content[:300]}...")
         return []

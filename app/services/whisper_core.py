@@ -17,7 +17,7 @@ def get_whisper_model(model_size, device, compute_type):
 
 
 # 获取音频对应的文本
-def get_text(audio_filename: str, model_size: str = "large-v3", device: str = "cuda", compute_type="int8", beam_size=5,
+def transcribe_audio(audio_filename: str, model_size: str = "large-v3", device: str = "cpu", compute_type="int8", beam_size=5,
              language="zh"):
     # 创建时间轴列表 subtitles
     subtitles = []
@@ -27,7 +27,7 @@ def get_text(audio_filename: str, model_size: str = "large-v3", device: str = "c
     model = get_whisper_model(model_size, device, compute_type)
 
     # 提纯音频，并获取有声时间轴列表 subtitles
-    wav, sr, timestamps = silero_vad_core.fresh_audio(audio_filename)
+    wav, sr, timestamps = silero_vad_core.extract_speech_segments(audio_filename)
 
     cnt, DB, length = 0, 10, len(timestamps)  # 记录已导出文本数量
     print("[ASR] 开始获取音频文本")

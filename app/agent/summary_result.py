@@ -1,10 +1,11 @@
 import json
 from json import JSONDecodeError
 from openai import OpenAI
+from app.utils.llm_json import parse_llm_json
 
 
 # 输入音频和视频的总结，输出有意义的内容片段 (至少传入一段)
-def audio_video_summary(api_key, base_url, model, audio_summaries=None, video_summaries=None):
+def detect_highlights(api_key, base_url, model, audio_summaries=None, video_summaries=None):
     client = OpenAI(
         api_key=api_key,
         base_url=base_url
@@ -83,7 +84,7 @@ def audio_video_summary(api_key, base_url, model, audio_summaries=None, video_su
     )
 
     try:
-        return json.loads(response.choices[0].message.content)
+        return parse_llm_json(response.choices[0].message.content)
     except JSONDecodeError:
         print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
         return []
