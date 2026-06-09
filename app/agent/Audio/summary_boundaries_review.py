@@ -1,9 +1,10 @@
 import json
 from json import JSONDecodeError
+from app.utils.llm_json import parse_llm_json
 
 
 # 比较相邻两个summary的边界是否高度相似
-def review_boundaries(prev_summaries, curr_summaries, client, model):
+def review_boundary(prev_summaries, curr_summaries, client, model):
     SYSTEM_PROMPT = """你是一个视频内容边界审查专家。你的任务是检查两个相邻视频片段的摘要，判断它们是否在话题边界上发生了截断。                                                        
               ## 背景
               这两段摘要是从同一段视频的两个相邻时间块各自独立总结出来的。第一个块结束时可能正好在一个话题中间，
@@ -44,7 +45,7 @@ def review_boundaries(prev_summaries, curr_summaries, client, model):
     )
 
     try:
-        return json.loads(response.choices[0].message.content)
+        return parse_llm_json(response.choices[0].message.content)
     except JSONDecodeError:
         print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
         return []

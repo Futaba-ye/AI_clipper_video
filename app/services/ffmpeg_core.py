@@ -9,7 +9,7 @@ def extract_audio(file_path: str, audio_path: str, format='wav', acodec='pcm_s16
 
 
 # 使用ffmpeg提取视频文件
-def extract_video(file_path: str):
-    return ffmpeg.input(file_path, vcodec='libx264').video()
+def extract_video(file_path: str, video_path: str, format='mp4'):
+    return ffmpeg.input(file_path).output(video_path, format=format, vcodec='copy', an=None).run()
 
 

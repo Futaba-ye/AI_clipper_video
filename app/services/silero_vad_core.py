@@ -14,7 +14,7 @@ def load_vad_model():
 
 
 # 音频提纯，去除噪音与空白音(16k音频采样频率)
-def fresh_audio(audio_filename: str):
+def extract_speech_segments(audio_filename: str):
     print("[VAD] 开始提取有声片段")
 
     model = load_vad_model()
