@@ -1,0 +1,35 @@
+# ============================================================
+# 全自动切片机 (Auto Clipper) — 依赖声明
+# 安装: pip install -r requirements.txt
+# ============================================================
+
+# ---------- ASR 语音识别 ----------
+faster-whisper>=1.2.0
+silero-vad>=6.0.0
+
+# ---------- 音视频处理 ----------
+ffmpeg-python>=0.2.0
+opencv-python>=4.0.0
+soundfile>=0.12.0
+
+# ---------- LLM / VLM API ----------
+openai>=2.0.0
+
+# ---------- 文本处理 ----------
+opencc-python-reimplemented>=0.1.7
+
+# ---------- ML 运行时 ----------
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# ---------- Web 服务 ----------
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+python-multipart>=0.0.20
+sse-starlette>=2.0.0
+
+# ---------- 工具 ----------
+python-dotenv>=1.0.0
+
+# ---------- 测试 ----------
+pytest>=7.0.0

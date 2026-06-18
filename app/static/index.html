@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全自动切片机 - Auto Clipper</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- ============================================================ -->
+    <!-- 顶栏 -->
+    <!-- ============================================================ -->
+    <header class="header">
+        <div class="header-logo">
+            <span class="logo-icon">✂</span>
+            <h1>全自动切片机</h1>
+            <span class="logo-sub">Auto Clipper</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-sm btn-ghost" id="btn-config" title="设置 API Key">⚙ 设置</button>
+            <span class="version">v1.0</span>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- Tab 导航 -->
+    <!-- ============================================================ -->
+    <nav class="tabs">
+        <button class="tab active" data-tab="tab-new">
+            <span class="tab-icon">📤</span> 新建任务
+        </button>
+        <button class="tab" data-tab="tab-progress">
+            <span class="tab-icon">📊</span> 任务进度
+            <span class="badge badge-running" id="badge-running" style="display:none">●</span>
+        </button>
+        <button class="tab" data-tab="tab-library">
+            <span class="tab-icon">🎬</span> 片段库
+        </button>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- 主内容区 -->
+    <!-- ============================================================ -->
+    <main class="main-content">
+
+        <!-- ───────── Tab 1: 新建任务 ───────── -->
+        <section class="tab-content active" id="tab-new">
+            <div class="two-columns">
+
+                <!-- 左栏：视频上传 -->
+                <div class="card">
+                    <h2 class="card-title">📁 选择视频</h2>
+                    <div class="upload-zone" id="upload-zone">
+                        <div class="upload-icon">🎥</div>
+                        <p class="upload-text">拖拽视频文件到此处，或点击选择</p>
+                        <p class="upload-hint">支持 MP4、MKV、AVI、MOV、FLV、WMV</p>
+                        <input type="file" id="file-input" accept="video/*,.mp4,.mkv,.avi,.mov,.flv,.wmv,.webm" hidden>
+                        <button class="btn btn-primary" id="btn-select-file">选择视频文件</button>
+                    </div>
+                    <div class="file-info hidden" id="file-info">
+                        <div class="file-name" id="file-name"></div>
+                        <div class="file-size" id="file-size"></div>
+                        <button class="btn btn-sm btn-outline" id="btn-clear-file">重新选择</button>
+                    </div>
+                </div>
+
+                <!-- 右栏：参数配置 -->
+                <div class="card">
+                    <h2 class="card-title">⚙ 处理参数</h2>
+
+                    <!-- 音频通道 -->
+                    <fieldset class="config-group">
+                        <legend>🔊 音频通道 (ASR + 总结)</legend>
+                        <label class="field">
+                            <span>API Key</span>
+                            <input type="password" id="cfg-audio-key" placeholder="sk-...">
+                        </label>
+                        <label class="field">
+                            <span>Base URL</span>
+                            <input type="text" id="cfg-audio-url" value="https://api.deepseek.com">
+                        </label>
+                        <label class="field">
+                            <span>模型</span>
+                            <select id="cfg-audio-model">
+                                <option value="deepseek-chat">deepseek-chat</option>
+                                <option value="deepseek-reasoner">deepseek-reasoner</option>
+                                <option value="gpt-4o">gpt-4o</option>
+                                <option value="gpt-4o-mini">gpt-4o-mini</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <!-- 视频通道 -->
+                    <fieldset class="config-group">
+                        <legend>🖼 视频通道 (VLM 画面分析)</legend>
+                        <label class="field">
+                            <span>API Key</span>
+                            <input type="password" id="cfg-video-key" placeholder="sk-...">
+                        </label>
+                        <label class="field">
+                            <span>Base URL</span>
+                            <input type="text" id="cfg-video-url" value="https://dashscope.aliyuncs.com/compatible-mode/v1">
+                        </label>
+                        <label class="field">
+                            <span>模型</span>
+                            <select id="cfg-video-model">
+                                <option value="qwen-vl-plus">qwen-vl-plus</option>
+                                <option value="qwen-vl-max">qwen-vl-max</option>
+                                <option value="gpt-4o">gpt-4o</option>
+                            </select>
+                        </label>
+                    </fieldset>
+
+                    <!-- 融合通道 -->
+                    <details class="config-group collapsible">
+                        <summary>🔗 融合通道（默认复用音频通道）</summary>
+                        <label class="field">
+                            <span>API Key</span>
+                            <input type="password" id="cfg-summary-key" placeholder="留空则复用音频通道">
+                        </label>
+                        <label class="field">
+                            <span>Base URL</span>
+                            <input type="text" id="cfg-summary-url" placeholder="留空则复用音频通道" value="https://api.deepseek.com">
+                        </label>
+                        <label class="field">
+                            <span>模型</span>
+                            <select id="cfg-summary-model">
+                                <option value="deepseek-chat">deepseek-chat</option>
+                                <option value="deepseek-reasoner">deepseek-reasoner</option>
+                                <option value="gpt-4o">gpt-4o</option>
+                            </select>
+                        </label>
+                    </details>
+                </div>
+            </div>
+
+            <!-- 开始按钮 -->
+            <div class="action-bar">
+                <button class="btn btn-primary btn-lg" id="btn-start" disabled>
+                    🚀 开始自动切片
+                </button>
+                <span class="action-hint" id="hint-start">请先选择视频文件</span>
+            </div>
+        </section>
+
+        <!-- ───────── Tab 2: 任务进度 ───────── -->
+        <section class="tab-content" id="tab-progress">
+            <div class="progress-empty" id="progress-empty">
+                <div class="empty-icon">📊</div>
+                <p>暂无进行中的任务</p>
+                <p class="empty-hint">在"新建任务"中启动切片后，进度将在此显示</p>
+            </div>
+
+            <div class="progress-panel hidden" id="progress-panel">
+                <!-- 进度概览 -->
+                <div class="card">
+                    <div class="progress-header">
+                        <h2 class="card-title" id="progress-title">处理中…</h2>
+                        <span class="progress-pct" id="progress-pct">0%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+                    </div>
+                    <div class="progress-meta">
+                        <span id="progress-step">准备中…</span>
+                        <span id="progress-elapsed"></span>
+                    </div>
+                </div>
+
+                <!-- 步骤列表 -->
+                <div class="card">
+                    <h2 class="card-title">📋 流水线步骤</h2>
+                    <div class="step-list" id="step-list">
+                        <!-- JS 动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 日志流 -->
+                <div class="card">
+                    <h2 class="card-title">📝 实时日志</h2>
+                    <div class="log-stream" id="log-stream">
+                        <div class="log-entry log-info">等待任务开始…</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ───────── Tab 3: 片段库 ───────── -->
+        <section class="tab-content" id="tab-library">
+            <div class="library-empty" id="library-empty">
+                <div class="empty-icon">🎬</div>
+                <p>暂无切片记录</p>
+                <p class="empty-hint">完成切片任务后，片段将在此展示</p>
+            </div>
+
+            <div class="library-content hidden" id="library-content">
+                <div class="card">
+                    <h2 class="card-title">📚 历史任务</h2>
+                    <div class="task-list" id="task-list">
+                        <!-- JS 动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 片段详情 -->
+                <div class="card hidden" id="clips-card">
+                    <div class="clips-header">
+                        <h2 class="card-title">✂ 切片片段</h2>
+                        <button class="btn btn-sm btn-outline" id="btn-back-tasks">← 返回任务列表</button>
+                    </div>
+                    <div class="clips-grid" id="clips-grid">
+                        <!-- JS 动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- 模态框：设置 -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay hidden" id="modal-config">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>⚙ 全局设置</h2>
+                <button class="btn-close" id="btn-close-config">✕</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">保存的配置将在下次使用时自动填充，API Key 会安全保存在本地。</p>
+                <fieldset class="config-group">
+                    <legend>🔊 音频通道</legend>
+                    <label class="field">
+                        <span>API Key</span>
+                        <input type="password" id="saved-audio-key" placeholder="sk-...">
+                    </label>
+                    <label class="field">
+                        <span>Base URL</span>
+                        <input type="text" id="saved-audio-url">
+                    </label>
+                    <label class="field">
+                        <span>模型</span>
+                        <input type="text" id="saved-audio-model">
+                    </label>
+                </fieldset>
+                <fieldset class="config-group">
+                    <legend>🖼 视频通道</legend>
+                    <label class="field">
+                        <span>API Key</span>
+                        <input type="password" id="saved-video-key" placeholder="sk-...">
+                    </label>
+                    <label class="field">
+                        <span>Base URL</span>
+                        <input type="text" id="saved-video-url">
+                    </label>
+                    <label class="field">
+                        <span>模型</span>
+                        <input type="text" id="saved-video-model">
+                    </label>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="btn-cancel-config">取消</button>
+                <button class="btn btn-primary" id="btn-save-config">💾 保存配置</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 模态框：视频预览 -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay hidden" id="modal-preview">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h2 id="preview-title">视频预览</h2>
+                <button class="btn-close" id="btn-close-preview">✕</button>
+            </div>
+            <div class="modal-body">
+                <video id="preview-video" controls style="width:100%;max-height:70vh;background:#000;">
+                    您的浏览器不支持视频播放
+                </video>
+                <div class="preview-summary" id="preview-summary"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

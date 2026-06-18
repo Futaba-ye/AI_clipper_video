@@ -3,6 +3,15 @@ from json import JSONDecodeError
 import cv2
 from app.utils.VTT_time import transform_vtt_time
 from app.utils.llm_json import parse_llm_json
+from app.utils.llm_retry import retry_on_failure
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
+
+
+@retry_on_failure(max_retries=3)
+def _call_llm(client, model, messages):
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
 
 
 # 提取帧画面
@@ -50,21 +59,20 @@ def summarize_scene(scene, video_path, client, model):
     start_str = transform_vtt_time(scene["start_time"])  # "00:15:30.000"
     end_str = transform_vtt_time(scene["end_time"])
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
+    response = _call_llm(
+        client, model,
+        [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": [
                 {"type": "image_url", "image_url": {"url": base64_frame}},
                 {"type": "text", "text": f"场景时间范围：{start_str} → {end_str}"}
             ]}
-        ],
-        stream=False
+        ]
     )
 
     # 返回python对象
     try:
         return parse_llm_json(response.choices[0].message.content)
     except (JSONDecodeError, Exception) as e:
-        print(f"[ERROR] JSON 解析失败: {e}\n原始返回: {response.choices[0].message.content[:300]}...")
+        logger.error(f"JSON 解析失败: {e}\n原始返回: {response.choices[0].message.content[:300]}...")
         return []

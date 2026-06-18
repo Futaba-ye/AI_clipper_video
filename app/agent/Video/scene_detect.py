@@ -1,4 +1,7 @@
 import cv2
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
 
 
 # 检测场景切换点（返回时间戳列表）
@@ -37,7 +40,7 @@ def detect_scenes(video_path: str, threshold: float = 30.0, min_scene_seconds: f
 
     scenes.append({"start_time": scene_start, "end_time": frame_idx / fps})
     cap.release()
-    print("场景切换点已检测完毕")
+    logger.info("场景切换点已检测完毕")
 
     return scenes
 

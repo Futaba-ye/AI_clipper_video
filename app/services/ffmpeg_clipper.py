@@ -1,6 +1,9 @@
 import os
 import re
 import ffmpeg
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
 
 
 def _sanitize_filename(name: str) -> str:
@@ -17,7 +20,7 @@ def clip_video(file_path, result_summary, output_dir):
         output_dir:      输出根目录（自动创建 clips/ 子目录）
     """
     if not result_summary:
-        print("[CLIP] 无精彩片段，跳过剪辑")
+        logger.info("[CLIP] 无精彩片段，跳过剪辑")
         return
 
     clips_dir = os.path.join(output_dir, "clips")
@@ -42,4 +45,4 @@ def clip_video(file_path, result_summary, output_dir):
         with open(txt_path, 'w', encoding='utf-8') as f:
             f.write(f"标题：{title}\n\n内容概括：{summary_text}")
 
-        print(f"[CLIP] {i+1}/{len(result_summary)}: {title} → {safe_title}.mp4")
+        logger.info(f"[CLIP] {i+1}/{len(result_summary)}: {title} → {safe_title}.mp4")

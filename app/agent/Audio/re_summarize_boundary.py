@@ -4,6 +4,15 @@ from json import JSONDecodeError
 
 from app.utils.VTT_parser import make_chunk_vtt
 from app.utils.llm_json import parse_llm_json
+from app.utils.llm_retry import retry_on_failure
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
+
+
+@retry_on_failure(max_retries=3)
+def _call_llm(client, model, messages):
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
 
 
 def parse_vtt_timestamp(ts: str) -> float:
@@ -53,17 +62,16 @@ def re_summarize_boundary(prev_summary, next_summary, prev_chunk, curr_chunk, cl
       【边界区域的完整原始字幕】
       {make_chunk_vtt(boundary_subs)}"""
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
+    response = _call_llm(
+        client, model,
+        [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_content}
-        ],
-        stream=False
+        ]
     )
 
     try:
         return parse_llm_json(response.choices[0].message.content)
     except JSONDecodeError:
-        print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
+        logger.error(f"JSON 解析失败，原始返回: {response.choices[0].message.content}")
         return []

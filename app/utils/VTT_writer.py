@@ -1,6 +1,9 @@
 import re
 import os
 from app.utils.VTT_time import transform_vtt_time
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
 
 
 # 替换 Windows 文件名中的非法字符为合法替代
@@ -21,7 +24,7 @@ def safe_open(file_path: str):
 
     safe_path = os.path.join(dir_path, safe_name)
     if safe_path != file_path:
-        print(f"[WARN] 文件名包含非法字符，已替换为: {safe_path}")
+        logger.warning(f"文件名包含非法字符，已替换为: {safe_path}")
     if dir_path:
         os.makedirs(dir_path, exist_ok=True)
 
@@ -30,7 +33,7 @@ def safe_open(file_path: str):
 
 # 接收 whisper 生成的时间轴(seconds)列表，生成 VTT 字幕文件
 def write_vtt(subtitles, output_path):
-    print("开始生成VTT字幕")
+    logger.info("开始生成VTT字幕")
 
     safe_path = safe_open(output_path)
 
@@ -43,12 +46,12 @@ def write_vtt(subtitles, output_path):
 
             f.write(f"{start_str} --> {end_str}\n{text}\n\n")
 
-    print(f"[导出] 字幕已保存至 {safe_path}")
+    logger.info(f"字幕已保存至 {safe_path}")
 
 
 # 接收 [{start_time, end_time, text}, ...]（已格式化的时间戳）生成 VTT 字幕文件
 def write_formatted_vtt(subtitles, output_path):
-    print("开始生成VTT字幕")
+    logger.info("开始生成VTT字幕")
 
     safe_path = safe_open(output_path)
 
@@ -66,13 +69,13 @@ def write_formatted_vtt(subtitles, output_path):
             f.write(f"{start_str} --> {end_str}\n{text}\n\n")
 
     if skipped:
-        print(f"[WARN] 跳过了 {skipped} 个无效条目（非 dict），原因可能是上游 LLM 返回了空 JSON")
-    print(f"[导出] 字幕已保存至 {safe_path}")
+        logger.warning(f"跳过了 {skipped} 个无效条目（非 dict），原因可能是上游 LLM 返回了空 JSON")
+    logger.info(f"字幕已保存至 {safe_path}")
 
 
 # 接收 [{start_time, end_time, title, summary}, ...]（已格式化的时间戳）生成 VTT 字幕文件
 def write_clipper_vtt(subtitles, output_path):
-    print("开始生成VTT字幕")
+    logger.info("开始生成VTT字幕")
 
     safe_path = safe_open(output_path)
 
@@ -86,4 +89,4 @@ def write_clipper_vtt(subtitles, output_path):
 
             f.write(f"{start_str} --> {end_str}\n{title}\n{summary}\n\n")
 
-    print(f"[导出] 字幕已保存至 {safe_path}")
+    logger.info(f"字幕已保存至 {safe_path}")
