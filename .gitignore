@@ -22,3 +22,6 @@ tests/
 # AI参考文件
 document/
 
+data/
+
+logs/

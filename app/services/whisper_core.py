@@ -1,10 +1,14 @@
 from faster_whisper import WhisperModel
 import app.services.silero_vad_core as silero_vad_core
 from opencc import OpenCC
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
 
 # 全局变量
 whisper_model = None
 whisper_config = None
+_cc_converter = None
 
 
 # 懒加载 whisper模型
@@ -16,13 +20,20 @@ def get_whisper_model(model_size, device, compute_type):
     return whisper_model
 
 
+# 懒加载 OpenCC 繁→简转换器
+def _get_cc():
+    global _cc_converter
+    if _cc_converter is None:
+        _cc_converter = OpenCC('t2s')
+    return _cc_converter
+
+
 # 获取音频对应的文本
 def transcribe_audio(audio_filename: str, model_size: str = "large-v3", device: str = "cpu", compute_type="int8", beam_size=5,
              language="zh"):
     # 创建时间轴列表 subtitles
     subtitles = []
-    # 创建opencc
-    cc = OpenCC('t2s')
+    cc = _get_cc()
 
     model = get_whisper_model(model_size, device, compute_type)
 
@@ -30,12 +41,12 @@ def transcribe_audio(audio_filename: str, model_size: str = "large-v3", device: 
     wav, sr, timestamps = silero_vad_core.extract_speech_segments(audio_filename)
 
     cnt, DB, length = 0, 10, len(timestamps)  # 记录已导出文本数量
-    print("[ASR] 开始获取音频文本")
+    logger.info("[ASR] 开始获取音频文本")
     for ts in timestamps:
         # 记录完成进度
         cnt += 1
         if round(cnt / length, 2) * 100 > DB:
-            print(f"[ASR] 即将完成 {DB}%")
+            logger.info(f"[ASR] 即将完成 {DB}%")
             DB += 10
 
         # 采样点

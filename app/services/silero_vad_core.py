@@ -1,6 +1,9 @@
 import soundfile
 import torch
 from silero_vad import load_silero_vad, get_speech_timestamps
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
 
 vad_model = None
 
@@ -15,7 +18,7 @@ def load_vad_model():
 
 # 音频提纯，去除噪音与空白音(16k音频采样频率)
 def extract_speech_segments(audio_filename: str):
-    print("[VAD] 开始提取有声片段")
+    logger.info("[VAD] 开始提取有声片段")
 
     model = load_vad_model()
     # soundfile 解码器进行解码
@@ -33,6 +36,6 @@ def extract_speech_segments(audio_filename: str):
         return_seconds=True,  # Return speech timestamps in seconds (default is samples)
     )
 
-    print(f"[VAD] 完成，共检测到 {len(speech_timestamps)} 个语音片段")
+    logger.info(f"[VAD] 完成，共检测到 {len(speech_timestamps)} 个语音片段")
 
     return wav, sr, speech_timestamps

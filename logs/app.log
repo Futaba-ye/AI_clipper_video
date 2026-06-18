@@ -1,0 +1,627 @@
+[10:44:50] INFO    __main__ | 输入视频: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】周五ACG聊天室（PPT厨往里进）_P1_1.mp4
+[10:44:50] INFO    __main__ | 输出目录: C:\Users\32600\Desktop\Video\Video_clipper
+[10:44:50] INFO    __main__ | [Step 1/8] 提取音频……
+[10:44:57] INFO    __main__ | [Step 1/8] 音频已保存至 C:\Users\32600\Desktop\Video\Video_clipper\extracted_audio.wav
+[10:44:57] INFO    __main__ | [Step 2/8] 提取视频……
+[10:45:00] INFO    __main__ | [Step 2/8] 视频已保存至 C:\Users\32600\Desktop\Video\Video_clipper\extracted_video.mp4
+[10:45:00] INFO    __main__ | [Step 3/8] ASR 转写中（可能需要数分钟）……
+[10:45:14] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[10:45:56] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[10:45:56] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[10:54:49] INFO    app.agent.Audio.audio_agent | 已将vtt切分为chunks
+[10:56:13] INFO    app.agent.Audio.audio_agent | 已将chunks初步总结，正在进行边界检查
+[10:56:17] INFO    app.agent.Audio.audio_agent | 0--1 True: 前块讨论期末考季及大学生应早考完早离校，后块回忆大学假期安排并暗示学校希望学生尽快离校，两者属于同一话题的延续，应合并为‘主播/主讲人讨论大学期末及假期安排，强调学校希望学生考完尽早离校’。
+[10:56:21] INFO    app.agent.Audio.audio_agent | 1--2 False: 前块专注于理论总结百合原因并感谢礼物，后块转向讨论代入感问题和不同题材（如女性冲突题材），话题发生自然切换。
+[10:56:21] INFO    app.agent.Audio.audio_agent | 2--3 False: 前块尾部主要分析动画区‘云子’现象，后块头部则专门讨论《假面骑士Blade》的作品定位，二者是不同话题的自然切换，仅通过提及Blade作为过渡。
+[10:56:21] INFO    app.agent.Audio.audio_agent | 边界检查完毕，已返回完整音频总结
+[10:56:21] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[10:56:21] WARNING app.utils.VTT_writer | 文件名包含非法字符，已替换为: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1hour_Audio-_ VTT.vtt
+[10:56:21] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1hour_Audio-_ VTT.vtt
+[10:57:14] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[10:57:14] WARNING app.utils.VTT_writer | 文件名包含非法字符，已替换为: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】Video_Audio_Final_1.vtt
+[10:57:14] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】Video_Audio_Final_1.vtt
+[11:15:22] INFO    app.agent.Video.scene_detect | 场景切换点已检测完毕
+[11:15:23] INFO    app.agent.Video.video_agent | 正在对视频进行识别
+[11:15:38] INFO    app.agent.Video.video_agent | 已将scenes总结
+[11:15:38] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[11:15:38] WARNING app.utils.VTT_writer | 文件名包含非法字符，已替换为: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】P1_1hour_Video_Summary_Test片段_1.vtt
+[11:15:38] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】P1_1hour_Video_Summary_Test片段_1.vtt
+[11:16:05] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[11:17:12] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[11:17:12] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[11:28:32] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[11:29:26] INFO    __main__ | 输入视频: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】周五ACG聊天室（PPT厨往里进）_P1_1.mp4
+[11:29:26] INFO    __main__ | 输出目录: C:\Users\32600\Desktop\Video\Video_clipper
+[11:29:26] INFO    __main__ | ==================================================
+[11:29:26] INFO    __main__ | [Phase 1/3] 并行提取音频 & 视频……
+[11:29:26] INFO    __main__ | [Step 1] 音频已存在，跳过提取
+[11:29:26] INFO    __main__ | [Step 2] 视频已存在，跳过提取
+[11:29:26] INFO    __main__ | ==================================================
+[11:29:26] INFO    __main__ | [Phase 2/3] 并行音频链 & 视频链……
+[11:29:26] INFO    __main__ | [Step 3] ASR 转写中（可能需要数分钟）……
+[11:29:26] INFO    __main__ | [Step 5] 场景检测中……
+[11:30:01] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[11:34:20] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[11:34:20] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[11:45:50] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[15:57:30] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[16:06:49] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[16:16:16] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[16:26:06] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[16:36:26] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[16:47:25] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[17:00:07] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[17:01:14] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[17:08:35] INFO    app.agent.Video.scene_detect | 场景切换点已检测完毕
+[17:08:35] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:08:35] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\Video_clipper\scenes.vtt
+[17:08:35] INFO    __main__ | [Step 5] 场景检测已保存，共 7 个场景
+[17:08:35] INFO    __main__ | [Step 6] 画面总结中（VLM 处理，可能需要数分钟）……
+[17:08:37] INFO    app.agent.Video.video_agent | 正在对视频进行识别
+[17:08:51] INFO    app.agent.Video.video_agent | 已将scenes总结
+[17:08:51] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:08:51] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\Video_clipper\video_summary.vtt
+[17:08:51] INFO    __main__ | [Step 6] 画面总结已保存，共 7 条
+[17:08:51] INFO    __main__ | [Phase 2] 视频链完成
+[17:14:39] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[17:15:45] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:15:45] WARNING app.utils.VTT_writer | 文件名包含非法字符，已替换为: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1hour_Audio_1.vtt
+[17:15:45] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1hour_Audio_1.vtt
+[17:15:45] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[17:15:49] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 13 个语音片段
+[17:15:49] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[17:16:02] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[17:16:15] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[17:16:28] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[17:17:16] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[17:17:27] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[17:17:38] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[17:18:09] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[17:18:21] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[17:18:38] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[17:19:05] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:19:05] WARNING app.utils.VTT_writer | 文件名包含非法字符，已替换为: C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1min 字幕_1.vtt
+[17:19:05] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】1min 字幕_1.vtt
+[17:24:32] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[18:39:05] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[18:46:58] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[18:54:58] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[19:03:09] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[19:11:22] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[19:19:26] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[19:27:23] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[19:27:23] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\Video_clipper\subtitles.vtt
+[19:27:23] INFO    __main__ | [Step 3] 字幕已保存，共 919 条
+[19:27:23] INFO    __main__ | [Step 4] 音频总结中（LLM 处理，可能需要数分钟）……
+[19:27:23] INFO    app.agent.Audio.audio_agent | 已将vtt切分为chunks
+[19:28:00] INFO    app.agent.Audio.audio_agent | 已将chunks初步总结，正在进行边界检查
+[19:28:03] INFO    app.agent.Audio.audio_agent | 0--1 True: 前后都在讨论大学期末与假期安排的话题，前块感叹期末临近，后块回忆大学假期时长，属于同一话题的自然延续，应合并为‘讨论期末与假期安排’。
+[19:28:05] INFO    app.agent.Audio.audio_agent | 1--2 False: 前块尾部在总结一个未解答的复杂问题并感谢打赏，后块头部开始讨论动画观赏方式的代入问题，话题完全不同，属于自然切换。
+[19:28:05] INFO    app.agent.Audio.audio_agent | 2--3 True: 两个摘要都在评价《假面骑士blade》的观看方式与体验，前者说适合共赏，后者进一步对比并建议搭配弹幕观看，属于同一话题的延续，应合并为'评价《假面骑士blade》适合共赏并建议搭配弹幕观看提升体验'。
+[19:28:07] INFO    app.agent.Audio.audio_agent | 边界检查完毕，已返回完整音频总结
+[19:28:07] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[19:28:07] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\Video_clipper\audio_summary.vtt
+[19:28:07] INFO    __main__ | [Step 4] 音频总结已保存，共 78 条
+[19:28:07] INFO    __main__ | [Phase 2] 音频链完成
+[19:28:07] INFO    __main__ | ==================================================
+[19:28:07] INFO    __main__ | [Phase 3/3] 双通道融合 & 裁剪……
+[19:28:07] INFO    __main__ | [Step 7] 双通道融合中（LLM 处理）……
+[19:28:25] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[19:28:25] INFO    app.utils.VTT_writer | 字幕已保存至 C:\Users\32600\Desktop\Video\Video_clipper\result_summary.vtt
+[19:28:25] INFO    __main__ | [Step 7] 融合结果已保存，共 10 条高光片段
+[19:28:25] INFO    __main__ | [Step 8] 裁剪视频片段……
+[19:28:26] INFO    app.services.ffmpeg_clipper | [CLIP] 1/10: 主播吐槽平台与天气，直播开场白 → 主播吐槽平台与天气，直播开场白.mp4
+[19:28:26] INFO    app.services.ffmpeg_clipper | [CLIP] 2/10: 主播调侃生日留言，称直播间为‘净土’ → 主播调侃生日留言，称直播间为‘净土’.mp4
+[19:28:26] INFO    app.services.ffmpeg_clipper | [CLIP] 3/10: 主播将直播间比作老年社区，分享按摩椅体验 → 主播将直播间比作老年社区，分享按摩椅体验.mp4
+[19:28:27] INFO    app.services.ffmpeg_clipper | [CLIP] 4/10: 主播科普小众体育比赛：猜地理图和经典俄罗斯方块 → 主播科普小众体育比赛：猜地理图和经典俄罗斯方块.mp4
+[19:28:27] INFO    app.services.ffmpeg_clipper | [CLIP] 5/10: 主播回忆大学经历：超长暑假与紧凑假期安排 → 主播回忆大学经历：超长暑假与紧凑假期安排.mp4
+[19:28:27] INFO    app.services.ffmpeg_clipper | [CLIP] 6/10: 主播深度解析百合番《上伊纳牡丹》的感情塑造缺陷 → 主播深度解析百合番《上伊纳牡丹》的感情塑造缺陷.mp4
+[19:28:27] INFO    app.services.ffmpeg_clipper | [CLIP] 7/10: 主播讨论代入感与精神连接，引出一个角色奖项归属的哲学问题 → 主播讨论代入感与精神连接，引出一个角色奖项归属的哲学问题.mp4
+[19:28:28] INFO    app.services.ffmpeg_clipper | [CLIP] 8/10: 主播细分百合题材偏好，探讨女女、男女、男男关系性的本质区别 → 主播细分百合题材偏好，探讨女女、男女、男男关系性的本质区别.mp4
+[19:28:28] INFO    app.services.ffmpeg_clipper | [CLIP] 9/10: 主播批判当前动画区‘云子文化’主流，并给出看番完整建议 → 主播批判当前动画区‘云子文化’主流，并给出看番完整建议.mp4
+[19:28:28] INFO    app.services.ffmpeg_clipper | [CLIP] 10/10: 主播深度长评《假面骑士Blade》：结构、演技、叙事与追剧心态 → 主播深度长评《假面骑士Blade》：结构、演技、叙事与追剧心态.mp4
+[19:28:28] INFO    __main__ | ==================================================
+[19:28:28] INFO    __main__ | 全自动切片流水线完成！
+[19:28:28] INFO    __main__ | 输出目录: C:\Users\32600\Desktop\Video\Video_clipper
+[22:07:58] INFO    app.main | ==================================================
+[22:07:58] INFO    app.main | 🚀 全自动切片机 Web 服务已启动
+[22:07:58] INFO    app.main |    本地地址: http://localhost:8000
+[22:07:58] INFO    app.main |    API 文档: http://localhost:8000/docs
+[22:07:58] INFO    app.main | ==================================================
+[11:31:18] INFO    __main__ | ==================================================
+[11:31:18] INFO    __main__ | 🚀 全自动切片机 Web 服务已启动
+[11:31:18] INFO    __main__ |    默认地址: http://localhost:8000
+[11:31:18] INFO    __main__ |    API 文档: http://localhost:8000/docs
+[11:31:18] INFO    __main__ | ==================================================
+[11:38:16] INFO    app.api.tasks | [API] 任务 20260616_113816_35be0a 已创建，视频 527.5MB
+[11:38:48] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[11:39:34] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[11:39:34] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[12:31:32] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[12:38:55] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[12:46:06] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[12:53:36] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[13:01:00] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[13:08:57] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[13:17:07] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[13:26:01] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[13:34:02] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[13:41:52] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[13:41:52] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_113813_eb8437\subtitles.vtt
+[13:41:53] INFO    app.agent.Audio.audio_agent | 已将vtt切分为chunks
+[13:42:07] ERROR   app.agent.Audio.chunk_summarize | JSON 解析失败，原始返回: [
+  {
+    "start_time": "00:30:27.700",
+    "end_time": "00:31:14.240",
+    "text": "探讨动画观赏中的代入感问题。主讲人质疑观众是否能真正代入日本动画，指出非日本人与日本校园场景的不现实性，并说明自己也代入不了国产动画，因缺乏修仙等世界观。"
+  },
+  {
+    "start_time": "00:31:37.400",
+    "end_time": "00:32:34.599",
+    "text": "分析对特定题材动画的喜好及其原因。主讲人困惑于自己对《MyGO》和《母鸡卡》等女性角色冲突题材的热衷，虽读过众多推测答案，但认为均不符合真实想法，计划将其作为未来视频题材进一步推敲。"
+  },
+  {
+    "start_time": "00:32:51.799",
+    "end_time": "00:34:43.619",
+    "text": "区分代入感与现实性，并引出作品角色奖项归属的讨论。主讲人指出代入感源于与角色和世界的“NewType系数”式精神连接，进而讨论《婚姻》中角色成崎阿伊的性别定位难题，面临在年度评奖中将其评为最佳女主还是最佳男配的决策。"
+  },
+  {
+    "start_time": "00:34:46.400",
+    "end_time": "00:36:29.800",
+    "text": "阐述对不同百合题材作品的偏好差异。主讲人明确并非对所有百合作品都感兴趣，偏爱如《Megu》和《上伊那牡丹》等具有强烈情感冲突的作品，而对《安达与岛村》等纠结痛苦的留白风格不太适应，强调喜好基于题材与个人电波的契合度。"
+  },
+  {
+    "start_time": "00:37:00.900",
+    "end_time": "00:38:31.099",
+    "text": "对比女女关系性与其他性取向关系性的区别，并吐槽近期资讯节目内容。主讲人回避深入探讨区别，转向抱怨本周“一周ACGN快报”的选题全是负面新闻和二次元游戏相关内容，形容选材过程像“搬屎”。"
+  },
+  {
+    "start_time": "00:38:46.300",
+    "end_time": "00:40:54.519",
+    "text": "评论新闻节目的市场定位与受众。主讲人指出“一周ACGN快报”是面向泛ACGN圈观众的资讯汇总，并引用同行“东云阳”的高流量为例，说明市场上存在大量需要快速获取信息以假装“最懂二次元”的所谓“云子”观众。"
+  },
+  {
+    "start_time": "00:41:10.599",
+    "end_time": "00:41:51.900",
+    "text": "辩驳视频内容同质化批评，并引入本期节目话题。主讲人回应“偷活”指责，承认自己与“二次元今天发生了啥”等账号内容高度重合，均基于相同素材创作，随后催促进入正题，宣布本周首要情报与直播间活动相关。"
+  },
+  {
+    "start_time": "00:41:52.199",
+    "end_time": "00:42:39.880",
+    "text": "宣布直播间完成了《假面骑士Blade》的完结直播，并批判动画区的“云子”现象。主讲人提到周二完结了包含49集TV和20周年舞台剧的《假面骑士Blade》，随后针对弹幕“云子速成班”的批评，阐述当前动画区现状是“大云子带着小云子玩”。
+  },
+  {
+    "start_time": "00:42:54.300",
+    "end_time": "00:44:04.960",
+    "text": "区分“云子”与专业观众，并提出完整了解新番的策略。主讲人以“饭八”为例，说明其并非“云子”，因其观看量极大，但偏好小众宝藏。进而总结，结合他作为大众口味导向的博主与“饭八”的小众推荐，观众即可“云变”每个季度的完整新番阵容。
+  },
+  {
+    "start_time": "00:44:08.099",
+    "end_time": "00:45:18.400",
+    "text": "承认观看过竞品视频，并决定追看热点新番。主讲人提到已看过“饭八”等人的视频带货内容，并决定因本季度《RE0》评价极高而去看，以避免失去共同话题，同时调侃《千大哥》不具吸引力。最后为主持人对《假面骑士Blade》的评价定调，认为该作品适合“共赏”。"
+  }
+]
+[13:42:24] INFO    app.agent.Audio.audio_agent | 已将chunks初步总结，正在进行边界检查
+[13:42:25] INFO    app.agent.Audio.audio_agent | 0--1 True: 前后摘要都在讨论大学生的期末时间与假期安排，属于同一话题的延续，前块提到催促大学生提前考试，后块接着回忆大学假期时长，应合并描述主播对大学生期末和假期的观点。
+[13:42:27] INFO    app.agent.Audio.audio_agent | 1--2 False: 后块头部摘要为空数组，没有内容可供对比，无法判定为同一话题截断。
+[13:42:27] INFO    app.agent.Audio.audio_agent | 2--3 False: 前块尾部摘要为空，后块头部摘要开始讨论新话题（作品对比与观看体验），无明显上下文衔接，因此不属于同一话题被截断的情况。
+[13:42:27] INFO    app.agent.Audio.audio_agent | 边界检查完毕，已返回完整音频总结
+[13:42:27] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[13:42:27] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_113813_eb8437\audio_summary.vtt
+[13:55:56] INFO    app.agent.Video.scene_detect | 场景切换点已检测完毕
+[13:55:56] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[13:55:56] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_113813_eb8437\scenes.vtt
+[13:55:57] INFO    app.agent.Video.video_agent | 正在对视频进行识别
+[13:56:04] INFO    app.agent.Video.video_agent | 已将scenes总结
+[13:56:04] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[13:56:04] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_113813_eb8437\video_summary.vtt
+[13:56:09] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[13:56:09] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_113813_eb8437\result_summary.vtt
+[13:56:10] INFO    app.services.ffmpeg_clipper | [CLIP] 1/3: 主播分享上海党群服务中心免费按摩椅奇遇 → 主播分享上海党群服务中心免费按摩椅奇遇.mp4
+[13:56:10] INFO    app.services.ffmpeg_clipper | [CLIP] 2/3: 深度解析百合动画：从《GIRLS BAND CRY》聊到男性为何爱看百合 → 深度解析百合动画：从《GIRLS BAND CRY》聊到男性为何爱看百合.mp4
+[13:56:11] INFO    app.services.ffmpeg_clipper | [CLIP] 3/3: 假面骑士Blade深度回顾：从剧情节奏到追番心态的全面剖析 → 假面骑士Blade深度回顾：从剧情节奏到追番心态的全面剖析.mp4
+[13:56:11] INFO    app.task_manager | [Task 20260616_113816_35be0a] 流水线完成，3 个片段
+[15:48:28] INFO    __main__ | 服务已关闭
+[15:48:38] INFO    __main__ | ==================================================
+[15:48:38] INFO    __main__ | 🚀 全自动切片机 Web 服务已启动
+[15:48:38] INFO    __main__ |    默认地址: http://localhost:8000
+[15:48:38] INFO    __main__ |    API 文档: http://localhost:8000/docs
+[15:48:38] INFO    __main__ | ==================================================
+[15:49:06] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 已创建，视频 527.5MB
+[15:49:29] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[15:50:05] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[15:50:05] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[15:58:09] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[16:05:28] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[16:12:32] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[16:20:15] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[16:27:56] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[16:34:53] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[16:41:24] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[16:49:27] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[16:56:04] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[17:02:35] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:02:35] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_154906_86ee8f\subtitles.vtt
+[17:02:35] INFO    app.agent.Audio.audio_agent | 已将vtt切分为chunks
+[17:02:59] INFO    app.agent.Audio.audio_agent | 已将chunks初步总结，正在进行边界检查
+[17:03:02] INFO    app.agent.Audio.audio_agent | 0--1 False: 前块尾部主要感慨时间节点和考试临近，后块头部开始回忆大学时期的假期安排，属于不同话题的自然切换。
+[17:03:02] INFO    app.agent.Audio.audio_agent | 1--2 True: 前后都在探讨对动画/题材的复杂思考，主播延续了‘尚未找到答案’这一话题线索，从对男性看百合的思考自然过渡到动画代入感和题材吸引力的问题，属于同一段讨论被截断，应合并为‘主播对动画题材偏好及代入感问题的思考’。
+[17:03:04] INFO    app.agent.Audio.audio_agent | 2--3 True: 前块在评价《假面骑士Blade》，后块接着讨论与之类似的作品（如《淫魂》），属于同一话题的延续——即围绕该类型作品的评价和观看体验展开，应合并为‘评价《假面骑士Blade》及同类作品，讨论观看效果’。
+[17:03:06] INFO    app.agent.Audio.audio_agent | 边界检查完毕，已返回完整音频总结
+[17:03:06] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:03:06] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_154906_86ee8f\audio_summary.vtt
+[17:15:35] INFO    app.agent.Video.scene_detect | 场景切换点已检测完毕
+[17:15:35] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:15:35] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_154906_86ee8f\scenes.vtt
+[17:15:36] INFO    app.agent.Video.video_agent | 正在对视频进行识别
+[17:15:37] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:37] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:38] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:40] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:40] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:40] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:43] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:43] ERROR   app.agent.Video.video_agent | scene 2 总结失败: Connection error.
+[17:15:43] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:43] ERROR   app.agent.Video.video_agent | scene 0 总结失败: Connection error.
+[17:15:43] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:43] ERROR   app.agent.Video.video_agent | scene 1 总结失败: Connection error.
+[17:15:45] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:45] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:45] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:47] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:47] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:47] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:50] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:50] ERROR   app.agent.Video.video_agent | scene 3 总结失败: Connection error.
+[17:15:50] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:50] ERROR   app.agent.Video.video_agent | scene 4 总结失败: Connection error.
+[17:15:51] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:51] ERROR   app.agent.Video.video_agent | scene 5 总结失败: Connection error.
+[17:15:52] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:15:54] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:15:58] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:15:58] ERROR   app.agent.Video.video_agent | scene 6 总结失败: Connection error.
+[17:15:58] INFO    app.agent.Video.video_agent | 已将scenes总结
+[17:15:58] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[17:15:58] WARNING app.utils.VTT_writer | 跳过了 7 个无效条目（非 dict），原因可能是上游 LLM 返回了空 JSON
+[17:15:58] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_154906_86ee8f\video_summary.vtt
+[17:16:00] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Connection error.，1s 后重试...
+[17:16:02] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Connection error.，2s 后重试...
+[17:16:06] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Connection error.
+[17:16:06] ERROR   app.task_manager | [Task 20260616_154906_86ee8f] 流水线失败: Connection error.
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_sync\http_proxy.py", line 316, in handle_request
+    stream = stream.start_tls(**kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_sync\http11.py", line 376, in start_tls
+    return self._stream.start_tls(ssl_context, server_hostname, timeout)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_backends\sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\Python3.13.3\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1037, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_client.py", line 440, in _send_request
+    return self._send_with_auth_retry(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_client.py", line 418, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 964, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Python3.13.3\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1028)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\task_manager.py", line 415, in run_pipeline
+    result_summary = summary_result.detect_highlights(
+        api_keys["summary_key"], api_keys["summary_url"], api_keys["summary_model"],
+        audio_result, video_result
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 91, in detect_highlights
+    response = _call_llm(
+        client, model,
+    ...<3 lines>...
+        ]
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 49, in wrapper
+    raise last_exception
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 40, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 13, in _call_llm
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1215, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<51 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1332, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1072, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+[18:25:59] INFO    __main__ | 服务已关闭
+[18:28:34] INFO    app.main | ==================================================
+[18:28:34] INFO    app.main | 🚀 全自动切片机 Web 服务已启动
+[18:28:34] INFO    app.main |    默认地址: http://localhost:8000
+[18:28:34] INFO    app.main |    API 文档: http://localhost:8000/docs
+[18:28:34] INFO    app.main | ==================================================
+[18:28:37] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 从步骤 'fusion' 重试
+[18:29:53] INFO    __main__ | ==================================================
+[18:29:53] INFO    __main__ | 🚀 全自动切片机 Web 服务已启动
+[18:29:53] INFO    __main__ |    默认地址: http://localhost:8000
+[18:29:53] INFO    __main__ |    API 文档: http://localhost:8000/docs
+[18:29:53] INFO    __main__ | ==================================================
+[18:43:27] INFO    __main__ | 服务已关闭
+[18:43:31] INFO    __main__ | ==================================================
+[18:43:31] INFO    __main__ | 🚀 全自动切片机 Web 服务已启动
+[18:43:31] INFO    __main__ |    默认地址: http://localhost:8000
+[18:43:31] INFO    __main__ |    API 文档: http://localhost:8000/docs
+[18:43:31] INFO    __main__ | ==================================================
+[18:51:00] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 被手动标记为失败
+[18:51:02] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 从步骤 'fusion' 重试
+[18:51:06] INFO    app.task_manager | [Resume] 从 subtitles.vtt 加载 919 条字幕
+[18:51:06] INFO    app.task_manager | [Resume] 从 audio_summary.vtt 加载 60 条
+[18:51:06] INFO    app.task_manager | [Resume] 从 scenes.vtt 加载 7 个场景
+[18:51:06] INFO    app.task_manager | [Resume] 从 video_summary.vtt 加载 0 条
+[18:51:06] ERROR   app.task_manager | [Task 20260616_154906_86ee8f] 流水线失败: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\task_manager.py", line 484, in run_pipeline
+    result_summary = summary_result.detect_highlights(
+        api_keys["summary_key"], api_keys["summary_url"], api_keys["summary_model"],
+        audio_result, video_result
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 18, in detect_highlights
+    client = OpenAI(
+        api_key=api_key,
+        base_url=base_url
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_client.py", line 194, in __init__
+    raise OpenAIError(
+        "Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable."
+    )
+openai.OpenAIError: Missing credentials. Please pass an `api_key`, `workload_identity`, `admin_api_key`, or set the `OPENAI_API_KEY` or `OPENAI_ADMIN_KEY` environment variable.
+[18:51:26] INFO    app.api.config | [API] 用户配置已更新
+[18:51:36] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 从步骤 'fusion' 重试
+[18:51:36] INFO    app.task_manager | [Resume] 从 subtitles.vtt 加载 919 条字幕
+[18:51:36] INFO    app.task_manager | [Resume] 从 audio_summary.vtt 加载 60 条
+[18:51:36] INFO    app.task_manager | [Resume] 从 scenes.vtt 加载 7 个场景
+[18:51:36] INFO    app.task_manager | [Resume] 从 video_summary.vtt 加载 0 条
+[18:51:37] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****/v1" is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[18:51:38] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****/v1" is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[18:51:40] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****/v1" is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[18:51:40] ERROR   app.task_manager | [Task 20260616_154906_86ee8f] 流水线失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****/v1" is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\task_manager.py", line 484, in run_pipeline
+    result_summary = summary_result.detect_highlights(
+        api_keys["summary_key"], api_keys["summary_url"], api_keys["summary_model"],
+        audio_result, video_result
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 91, in detect_highlights
+    response = _call_llm(
+        client, model,
+    ...<3 lines>...
+        ]
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 49, in wrapper
+    raise last_exception
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 40, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 13, in _call_llm
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1215, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<51 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1332, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1105, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****/v1" is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[18:51:56] INFO    app.api.config | [API] 用户配置已更新
+[18:51:59] INFO    app.api.tasks | [API] 任务 20260616_154906_86ee8f 从步骤 'fusion' 重试
+[18:51:59] INFO    app.task_manager | [Resume] 从 subtitles.vtt 加载 919 条字幕
+[18:51:59] INFO    app.task_manager | [Resume] 从 audio_summary.vtt 加载 60 条
+[18:51:59] INFO    app.task_manager | [Resume] 从 scenes.vtt 加载 7 个场景
+[18:51:59] INFO    app.task_manager | [Resume] 从 video_summary.vtt 加载 0 条
+[18:52:18] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[18:52:18] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260616_154906_86ee8f\result_summary.vtt
+[18:52:19] INFO    app.services.ffmpeg_clipper | [CLIP] 1/17: 主播吐槽视频平台功能缺陷与BGM丢失 → 主播吐槽视频平台功能缺陷与BGM丢失.mp4
+[18:52:19] INFO    app.services.ffmpeg_clipper | [CLIP] 2/17: 主播回应生日祝福并互换祝福 → 主播回应生日祝福并互换祝福.mp4
+[18:52:19] INFO    app.services.ffmpeg_clipper | [CLIP] 3/17: 主播定义直播间为互联网中老年社区与党群服务中心 → 主播定义直播间为互联网中老年社区与党群服务中心.mp4
+[18:52:19] INFO    app.services.ffmpeg_clipper | [CLIP] 4/17: 主播详述社区党群服务中心免费按摩椅体验并澄清广告疑云 → 主播详述社区党群服务中心免费按摩椅体验并澄清广告疑云.mp4
+[18:52:19] INFO    app.services.ffmpeg_clipper | [CLIP] 5/17: 主播侃侃而谈体育赛事：斯诺克规则、汤姆斯杯分析与对飞镖的认知变化 → 主播侃侃而谈体育赛事：斯诺克规则、汤姆斯杯分析与对飞镖的认知变化.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 6/17: 主播列举小众竞技项目：猜地理图与经典俄罗斯方块比赛 → 主播列举小众竞技项目：猜地理图与经典俄罗斯方块比赛.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 7/17: 主播感慨临近期末并回忆大学假期安排 → 主播感慨临近期末并回忆大学假期安排.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 8/17: 主播犀利点评体育俱乐部与球员动态，并用PPT作为诱饵 → 主播犀利点评体育俱乐部与球员动态，并用PPT作为诱饵.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 9/17: 主播深入剖析《【我推的孩子】》剧情缺陷：依赖作画与角色发癫 → 主播深入剖析《【我推的孩子】》剧情缺陷：依赖作画与角色发癫.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 10/17: 主播深度解读《我推的孩子》角色情感塑造与‘1D小剧场’的精妙 → 主播深度解读《我推的孩子》角色情感塑造与‘1D小剧场’的精妙.mp4
+[18:52:20] INFO    app.services.ffmpeg_clipper | [CLIP] 11/17: 主播与观众互动讨论‘看百合’与性取向的关系 → 主播与观众互动讨论‘看百合’与性取向的关系.mp4
+[18:52:21] INFO    app.services.ffmpeg_clipper | [CLIP] 12/17: 主播深入探讨男性喜欢看百合的复杂心理与代入感问题 → 主播深入探讨男性喜欢看百合的复杂心理与代入感问题.mp4
+[18:52:21] INFO    app.services.ffmpeg_clipper | [CLIP] 13/17: 主播吐槽本周ACG新闻质量：像在搬屎 → 主播吐槽本周ACG新闻质量：像在搬屎.mp4
+[18:52:21] INFO    app.services.ffmpeg_clipper | [CLIP] 14/17: 主播批判动画区‘云子’现象并定位自身内容 → 主播批判动画区‘云子’现象并定位自身内容.mp4
+[18:52:22] INFO    app.services.ffmpeg_clipper | [CLIP] 15/17: 主播深度分析《假面骑士Blade》前20集叙事节奏与菊前辈角色弧光 → 主播深度分析《假面骑士Blade》前20集叙事节奏与菊前辈角色弧光.mp4
+[18:52:22] INFO    app.services.ffmpeg_clipper | [CLIP] 16/17: 主播总结《假面骑士Blade》整体观感并批评观众对旧作的滤镜 → 主播总结《假面骑士Blade》整体观感并批评观众对旧作的滤镜.mp4
+[18:52:22] INFO    app.services.ffmpeg_clipper | [CLIP] 17/17: 主播分析追番过程中影响观感的几种行为：造假药与共振 → 主播分析追番过程中影响观感的几种行为：造假药与共振.mp4
+[18:52:22] INFO    app.task_manager | [Task 20260616_154906_86ee8f] 流水线完成，17 个片段
+[09:36:39] INFO    __main__ | ==================================================
+[09:36:39] INFO    __main__ | 🚀 全自动切片机 Web 服务已启动
+[09:36:39] INFO    __main__ |    默认地址: http://localhost:8000
+[09:36:39] INFO    __main__ |    API 文档: http://localhost:8000/docs
+[09:36:39] INFO    __main__ | ==================================================
+[09:37:46] INFO    app.api.tasks | [API] 任务 20260617_093745_13135c 已创建，视频 527.5MB
+[09:38:43] INFO    app.services.silero_vad_core | [VAD] 开始提取有声片段
+[09:39:17] INFO    app.services.silero_vad_core | [VAD] 完成，共检测到 533 个语音片段
+[09:39:17] INFO    app.services.whisper_core | [ASR] 开始获取音频文本
+[09:47:36] INFO    app.services.whisper_core | [ASR] 即将完成 10%
+[09:55:34] INFO    app.services.whisper_core | [ASR] 即将完成 20%
+[10:03:12] INFO    app.services.whisper_core | [ASR] 即将完成 30%
+[10:10:57] INFO    app.services.whisper_core | [ASR] 即将完成 40%
+[10:18:29] INFO    app.services.whisper_core | [ASR] 即将完成 50%
+[10:26:25] INFO    app.services.whisper_core | [ASR] 即将完成 60%
+[10:34:46] INFO    app.services.whisper_core | [ASR] 即将完成 70%
+[10:43:33] INFO    app.services.whisper_core | [ASR] 即将完成 80%
+[10:51:33] INFO    app.services.whisper_core | [ASR] 即将完成 90%
+[10:59:27] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[10:59:27] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260617_093745_13135c\subtitles.vtt
+[10:59:27] INFO    app.agent.Audio.audio_agent | 已将vtt切分为chunks
+[10:59:29] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:29] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:29] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:30] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:30] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:30] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:32] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] ERROR   app.agent.Audio.audio_agent | chunk 2 总结失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] ERROR   app.agent.Audio.audio_agent | chunk 0 总结失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] ERROR   app.agent.Audio.audio_agent | chunk 1 总结失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:32] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:33] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:35] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:35] ERROR   app.agent.Audio.audio_agent | chunk 3 总结失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:35] INFO    app.agent.Audio.audio_agent | 已将chunks初步总结，正在进行边界检查
+[10:59:35] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:35] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:35] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[10:59:37] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:37] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:37] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[10:59:39] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] ERROR   app.agent.Audio.audio_agent | review_boundary 对 0--1 失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] ERROR   app.agent.Audio.audio_agent | review_boundary 对 1--2 失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] ERROR   app.agent.Audio.audio_agent | review_boundary 对 2--3 失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] INFO    app.agent.Audio.audio_agent | 0--1 False: 审查异常: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] INFO    app.agent.Audio.audio_agent | 1--2 False: 审查异常: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] INFO    app.agent.Audio.audio_agent | 2--3 False: 审查异常: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[10:59:39] INFO    app.agent.Audio.audio_agent | 边界检查完毕，已返回完整音频总结
+[10:59:39] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[10:59:39] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260617_093745_13135c\audio_summary.vtt
+[11:13:08] INFO    app.agent.Video.scene_detect | 场景切换点已检测完毕
+[11:13:08] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[11:13:08] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260617_093745_13135c\scenes.vtt
+[11:13:09] INFO    app.agent.Video.video_agent | 正在对视频进行识别
+[11:13:16] INFO    app.agent.Video.video_agent | 已将scenes总结
+[11:13:16] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[11:13:16] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260617_093745_13135c\video_summary.vtt
+[11:13:17] WARNING app.utils.llm_retry | 第 1/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，1s 后重试...
+[11:13:18] WARNING app.utils.llm_retry | 第 2/3 次调用失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}，2s 后重试...
+[11:13:20] ERROR   app.utils.llm_retry | 重试 3 次后仍然失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[11:13:20] ERROR   app.task_manager | [Task 20260617_093745_13135c] 流水线失败: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+Traceback (most recent call last):
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\task_manager.py", line 484, in run_pipeline
+    result_summary = summary_result.detect_highlights(
+        api_keys["summary_key"], api_keys["summary_url"], api_keys["summary_model"],
+        audio_result, video_result
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 91, in detect_highlights
+    response = _call_llm(
+        client, model,
+    ...<3 lines>...
+        ]
+    )
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 49, in wrapper
+    raise last_exception
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\utils\llm_retry.py", line 40, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\app\agent\summary_result.py", line 13, in _call_llm
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1215, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<51 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1332, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Code_Projects\Video_Slice\auto_clipper_backend\.venv\Lib\site-packages\openai\_base_client.py", line 1105, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Authentication Fails, Your api key: ****57d3 is invalid', 'type': 'authentication_error', 'param': None, 'code': 'invalid_request_error'}}
+[11:49:06] INFO    app.api.tasks | [API] 任务 20260617_093745_13135c 从步骤 'fusion' 重试
+[11:49:06] INFO    app.task_manager | [Resume] 从 subtitles.vtt 加载 919 条字幕
+[11:49:06] INFO    app.task_manager | [Resume] 从 audio_summary.vtt 加载 0 条
+[11:49:06] INFO    app.task_manager | [Resume] 从 scenes.vtt 加载 7 个场景
+[11:49:06] INFO    app.task_manager | [Resume] 从 video_summary.vtt 加载 7 条
+[11:49:08] INFO    app.utils.VTT_writer | 开始生成VTT字幕
+[11:49:08] INFO    app.utils.VTT_writer | 字幕已保存至 D:\Code_Projects\Video_Slice\auto_clipper_backend\data\tasks\20260617_093745_13135c\result_summary.vtt
+[11:49:08] INFO    app.task_manager | [Task 20260617_093745_13135c] 流水线完成，0 个片段
+[11:49:40] INFO    __main__ | 服务已关闭

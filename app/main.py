@@ -1,160 +1,130 @@
-from app.services import ffmpeg_core, whisper_core, ffmpeg_clipper
-from app.agent.Audio import audio_agent
-from app.agent.Video import scene_detect, video_agent
-from app.utils import VTT_writer, VTT_parser
-from app.agent import summary_result
+"""
+全自动切片机 (Auto Clipper) — FastAPI Web 服务
+
+启动方式：
+    python main.py                  # 默认 http://localhost:8000
+    python main.py --port 8080      # 指定端口
+    python main.py --no-browser     # 不自动打开浏览器
+
+前端页面在启动后自动在浏览器中打开。
+"""
+from __future__ import annotations
+
+import os
+import sys
+import argparse
+import asyncio
+import webbrowser
+from pathlib import Path
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+from dotenv import load_dotenv
+
+from app.api.tasks import router as tasks_router
+from app.api.config import router as config_router
+from app.api.clips import router as clips_router
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
+
+# 加载 .env
+load_dotenv()
+
+# 静态文件目录
+STATIC_DIR = Path(__file__).resolve().parent / "static"
 
 
-# 处理视频并剪辑精彩片段
-def ai_clipper_video(file_path, output_audio_path, output_video_path,
-                     output_subtitles_path, output_audio_summary_path,
-                     output_scenes_path, output_video_summary_path, output_result_vtt_path, output_dir,
-                     audio_api_key, audio_base_url, audio_model,
-                     video_api_key, video_base_url, video_model,
-                     summary_api_key, summary_base_url, summary_model):
+# ============================================================
+# Lifespan — 启动 & 关闭
+# ============================================================
 
-    # 抽取音频和视频
-    ffmpeg_core.extract_audio(file_path, output_audio_path)
-    ffmpeg_core.extract_video(file_path, output_video_path)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """应用生命周期：启动时打印地址，结束时清理。"""
+    logger.info("=" * 50)
+    logger.info("🚀 全自动切片机 Web 服务已启动")
+    logger.info("   默认地址: http://localhost:8000")
+    logger.info("   API 文档: http://localhost:8000/docs")
+    logger.info("=" * 50)
+    yield
+    logger.info("服务已关闭")
 
-    # 处理音频
-    # 获取音频文本
-    audio_subtitles = whisper_core.transcribe_audio(output_audio_path)
-    VTT_writer.write_vtt(subtitles=audio_subtitles, output_path=output_subtitles_path)
-    # 获取音频总结
-    audio_result = audio_agent.generate_audio_summary(audio_subtitles, audio_api_key, audio_base_url, audio_model)
-    VTT_writer.write_formatted_vtt(audio_result, output_audio_summary_path)
 
-    # 处理视频
-    # 获取画面片段时间轴
-    scenes = scene_detect.detect_scenes(output_video_path)
-    VTT_writer.write_formatted_vtt(VTT_parser.scenes_to_vtt(scenes), output_scenes_path)
-    # 获取画面总结
-    video_result = video_agent.generate_scene_summaries(scenes, output_video_path, video_api_key, video_base_url, video_model)
-    VTT_writer.write_formatted_vtt(video_result, output_video_summary_path)
+# ============================================================
+# FastAPI 应用
+# ============================================================
 
-    # 获取最后的分析总结
-    result_summary = summary_result.detect_highlights(summary_api_key, summary_base_url, summary_model, audio_result, video_result)
-    VTT_writer.write_clipper_vtt(result_summary, output_result_vtt_path)
+app = FastAPI(
+    title="全自动切片机 (Auto Clipper)",
+    description="自动从直播回放中识别精彩片段并裁剪",
+    version="1.0.0",
+    lifespan=lifespan,
+)
 
-    # 剪辑部分
-    ffmpeg_clipper.clip_video(file_path, result_summary, output_dir)
+# 注册 API 路由
+app.include_router(tasks_router)
+app.include_router(config_router)
+app.include_router(clips_router)
+
+
+# ============================================================
+# 前端页面
+# ============================================================
+
+@app.get("/")
+async def index():
+    """主页 — 返回前端 SPA。"""
+    return FileResponse(STATIC_DIR / "index.html")
+
+
+# 静态文件挂载放在最后，避免覆盖 API 路由
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+
+# ============================================================
+# 入口
+# ============================================================
+
+SERVER_PORT = 8000
+AUTO_OPEN_BROWSER = True
+
+
+def main():
+    global SERVER_PORT, AUTO_OPEN_BROWSER
+
+    parser = argparse.ArgumentParser(description="全自动切片机 (Auto Clipper) Web 服务")
+    parser.add_argument("--port", type=int, default=8000, help="服务端口号（默认 8000）")
+    parser.add_argument("--no-browser", action="store_true", help="不自动打开浏览器")
+    parser.add_argument("--host", type=str, default="127.0.0.1", help="绑定地址（默认 127.0.0.1）")
+    args = parser.parse_args()
+
+    SERVER_PORT = args.port
+    AUTO_OPEN_BROWSER = not args.no_browser
+
+    # 自动打开浏览器
+    if AUTO_OPEN_BROWSER:
+        def _open_browser():
+            # 等待服务启动后打开
+            url = f"http://localhost:{SERVER_PORT}"
+            webbrowser.open(url)
+
+        # 延迟 1.5 秒打开（等 uvicorn 启动完成）
+        import threading
+        threading.Timer(1.5, _open_browser).start()
+
+    # 启动服务
+    import uvicorn
+    uvicorn.run(
+        app,
+        host=args.host,
+        port=SERVER_PORT,
+        log_level="info",
+    )
 
 
 if __name__ == "__main__":
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
-
-    # ============================================================
-    # RESUME_MODE 选一：
-    #   "full"   — 完整流程（FFmpeg → ASR → 音频总结 → 场景检测 → 画面总结 → 融合 → 剪辑）
-    #   "video"  — 从画面总结恢复（跳过 ASR+音频总结，读取 audio_summary.vtt）
-    #   "fusion" — 从双通道融合恢复（跳过全部上游，读取 audio_summary + video_summary 两个 VTT）
-    # ============================================================
-    RESUME_MODE = "full"
-
-    # ========== 输入文件 ==========
-    input_video = r"C:\Users\32600\Desktop\Video\【瓶子录播5.22_杂谈电台】周五ACG聊天室（PPT厨往里进）_P1_1.mp4"
-
-    # ========== 输出目录 ==========
-    output_dir = r"C:\Users\32600\Desktop\Video\Video_clipper"
-    os.makedirs(output_dir, exist_ok=True)
-
-    # ========== 输出路径 ==========
-    output_audio_path         = os.path.join(output_dir, "extracted_audio.wav")
-    output_video_path         = os.path.join(output_dir, "extracted_video.mp4")
-    output_subtitles_path     = os.path.join(output_dir, "subtitles.vtt")
-    output_audio_summary_path = os.path.join(output_dir, "audio_summary.vtt")
-    output_scenes_path        = os.path.join(output_dir, "scenes.vtt")
-    output_video_summary_path = os.path.join(output_dir, "video_summary.vtt")
-    output_result_vtt_path    = os.path.join(output_dir, "result_summary.vtt")
-
-    # ========== API 密钥 ==========
-    audio_api_key   = os.getenv("Audio_API_KEY")
-    audio_base_url  = os.getenv("Audio_BASE_URL")
-    audio_model     = "deepseek-chat"
-
-    video_api_key   = os.getenv("VISION_API_KEY")
-    video_base_url  = os.getenv("VISION_BASE_URL")
-    video_model     = "qwen-vl-plus"
-
-    summary_api_key  = os.getenv("Audio_API_KEY")
-    summary_base_url = os.getenv("Audio_BASE_URL")
-    summary_model    = "deepseek-chat"
-
-    # ================================================================
-    if RESUME_MODE == "full":
-        # ==================== 完整流程 ====================
-        ai_clipper_video(
-            file_path=input_video,
-            output_audio_path=output_audio_path,
-            output_video_path=output_video_path,
-            output_subtitles_path=output_subtitles_path,
-            output_audio_summary_path=output_audio_summary_path,
-            output_scenes_path=output_scenes_path,
-            output_video_summary_path=output_video_summary_path,
-            output_result_vtt_path=output_result_vtt_path,
-            output_dir=output_dir,
-            audio_api_key=audio_api_key,
-            audio_base_url=audio_base_url,
-            audio_model=audio_model,
-            video_api_key=video_api_key,
-            video_base_url=video_base_url,
-            video_model=video_model,
-            summary_api_key=summary_api_key,
-            summary_base_url=summary_base_url,
-            summary_model=summary_model,
-        )
-
-    elif RESUME_MODE == "video":
-        # ==================== 从画面总结恢复 ====================
-        print("[RESUME:video] 从视频场景总结恢复……")
-        from app.utils.VTT_parser import parse_vtt_to_subtitles
-
-        audio_result = parse_vtt_to_subtitles(output_audio_summary_path)
-        print(f"[RESUME:video] 已加载音频总结，共 {len(audio_result)} 条")
-
-        scenes = scene_detect.detect_scenes(output_video_path)
-        VTT_writer.write_formatted_vtt(VTT_parser.scenes_to_vtt(scenes), output_scenes_path)
-        print(f"[RESUME:video] 已检测 {len(scenes)} 个场景")
-
-        video_result = video_agent.generate_scene_summaries(
-            scenes, output_video_path, video_api_key, video_base_url, video_model
-        )
-        VTT_writer.write_formatted_vtt(video_result, output_video_summary_path)
-
-        result_summary = summary_result.detect_highlights(
-            summary_api_key, summary_base_url, summary_model,
-            audio_result, video_result
-        )
-        VTT_writer.write_clipper_vtt(result_summary, output_result_vtt_path)
-
-        ffmpeg_clipper.clip_video(input_video, result_summary, output_dir)
-        print("[RESUME:video] 完成！")
-
-    elif RESUME_MODE == "fusion":
-        # ==================== 从双通道融合恢复 ====================
-        print("[RESUME:fusion] 从双通道融合恢复……")
-        from app.utils.VTT_parser import parse_vtt_to_subtitles
-
-        audio_result = parse_vtt_to_subtitles(output_audio_summary_path)
-        print(f"[RESUME:fusion] 已加载音频总结，共 {len(audio_result)} 条")
-
-        video_result = parse_vtt_to_subtitles(output_video_summary_path)
-        print(f"[RESUME:fusion] 已加载画面总结，共 {len(video_result)} 条")
-
-        result_summary = summary_result.detect_highlights(
-            summary_api_key, summary_base_url, summary_model,
-            audio_result, video_result
-        )
-
-        # 保存融合结果
-        VTT_writer.write_clipper_vtt(result_summary, output_result_vtt_path)
-        print(f"[RESUME:fusion] 融合结果已保存至 {output_result_vtt_path}")
-
-        # 剪辑
-        ffmpeg_clipper.clip_video(input_video, result_summary, output_dir)
-        print("[RESUME:fusion] 完成！")
-
-
+    main()

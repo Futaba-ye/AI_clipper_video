@@ -2,6 +2,15 @@ import json
 from json import JSONDecodeError
 from app.utils.VTT_parser import make_chunk_vtt
 from app.utils.llm_json import parse_llm_json
+from app.utils.llm_retry import retry_on_failure
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
+
+
+@retry_on_failure(max_retries=3)
+def _call_llm(client, model, messages):
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
 
 
 # 将一个vvt字幕chunk总结为summary
@@ -41,13 +50,12 @@ def summarize_chunk(chunk, client, model):
     # 把 chunk 格式化成vtt标准文本
     vtt_text = make_chunk_vtt(chunk)
 
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
+    response = _call_llm(
+        client, model,
+        [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": vtt_text},
-        ],
-        stream=False,  # stream=False 非流式（一次性返回）
+        ]
     )
 
     raw = response.choices[0].message.content
@@ -56,5 +64,5 @@ def summarize_chunk(chunk, client, model):
     try:
         return parse_llm_json(raw)
     except JSONDecodeError:
-        print(f"[ERROR] JSON 解析失败，原始返回: {raw}")
+        logger.error(f"JSON 解析失败，原始返回: {raw}")
         return []

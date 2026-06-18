@@ -2,6 +2,15 @@ import json
 from json import JSONDecodeError
 from openai import OpenAI
 from app.utils.llm_json import parse_llm_json
+from app.utils.llm_retry import retry_on_failure
+from app.utils.log_config import get_logger
+
+logger = get_logger(__name__)
+
+
+@retry_on_failure(max_retries=3)
+def _call_llm(client, model, messages):
+    return client.chat.completions.create(model=model, messages=messages, timeout=120)
 
 
 # 输入音频和视频的总结，输出有意义的内容片段 (至少传入一段)
@@ -63,6 +72,10 @@ def detect_highlights(api_key, base_url, model, audio_summaries=None, video_summ
     ]
     '''
 
+    if not audio_summaries and not video_summaries:
+        logger.warning("detect_highlights 未收到任何输入，返回空列表")
+        return []
+
     if audio_summaries and video_summaries:
         USER_PROMPT = f'''音频总结：
                           {json.dumps(audio_summaries, ensure_ascii=False, indent=2)}
@@ -75,9 +88,9 @@ def detect_highlights(api_key, base_url, model, audio_summaries=None, video_summ
         USER_PROMPT = f'''视频总结：{json.dumps(video_summaries, ensure_ascii=False, indent=2)}'''
 
     # 调用模型
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
+    response = _call_llm(
+        client, model,
+        [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": USER_PROMPT}
         ]
@@ -86,7 +99,7 @@ def detect_highlights(api_key, base_url, model, audio_summaries=None, video_summ
     try:
         return parse_llm_json(response.choices[0].message.content)
     except JSONDecodeError:
-        print(f"[ERROR] JSON 解析失败，原始返回: {response.choices[0].message.content}")
+        logger.error(f"JSON 解析失败，原始返回: {response.choices[0].message.content}")
         return []
 
 
